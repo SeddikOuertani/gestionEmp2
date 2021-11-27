@@ -56,6 +56,7 @@ public class EmployeController {
 	public String showPermList(@PathVariable("login") String login, Model model) {
 		Employe employe = empService.findEmployeByLogin(login);
 		List<Permission> listPermissions = empService.findPermissionsByEmpId(employe.getId());
+		model.addAttribute("employe",employe);
 		model.addAttribute("listPerm",listPermissions);
 		return "liste_permission";
 	}
