@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.gestionEmp.entities.Responsable;
 
 @Repository
-public interface ResponsableRepository extends JpaRepository<Responsable, Long> {
+public interface ResponsableRepository extends JpaRepository<Responsable, Long>, ResponsableRepositoryCustom {
 
 	
 }

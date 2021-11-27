@@ -17,13 +17,16 @@ public class ResponsableRepositoryCustomImpl implements ResponsableRepositoryCus
 	private EntityManager entityManager;
 
 	
-	public void validePermission(Long empId, Long permId) {
+	public int validePermission(Long permId) {
 		String etat = "en_cours";
-		Query query = entityManager.createNativeQuery("UPDATE Permission SET etat = ?1 WHERE id_perm = ?2",Permission.class);
+		Query query = entityManager.createNativeQuery("UPDATE Permission SET etat = ?1 WHERE id_perm = ?2");
 		query.setParameter(1, etat);
+		query.setParameter(2, permId);
+		
+		return query.executeUpdate();
 	}
 
-	public void valideConge(Long empId, Long permId) {
-		
+	public int valideConge(Long empId, Long permId) {
+		return 0;
 	}
 }
