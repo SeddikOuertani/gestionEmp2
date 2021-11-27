@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gestionEmp.entities.Employe;
+import com.gestionEmp.entities.Permission;
 
 @Repository
 @Transactional(readOnly = true)
@@ -49,6 +50,14 @@ public class EmployeRepositoryCustomImpl implements EmployeRepositoryCustom{
 		querySet.setParameter(8, id);
 		
 		return querySet.executeUpdate();
+	}
+
+	public int permissionFinish(Long permId) {
+		Query query = entityManager.createNativeQuery("UPDATE Permission SET etat = ?1 WHERE perm_id = ?2");
+		query.setParameter(1, permId);
+		
+		
+		return 0;
 	}
 
 }

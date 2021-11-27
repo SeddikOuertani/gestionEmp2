@@ -9,5 +9,6 @@ public interface EmployeRepositoryCustom {
 	List<Employe> getEmployeListByName(String name);
 	Employe getEmployeByLogin(String login);
 	int updateEmployeAt(Long id, Employe employe);
+	int permissionFinish(Long permId);
 	
 }
