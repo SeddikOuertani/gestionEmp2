@@ -1,0 +1,1 @@
+spanDelType = document.getElementById("deleteTypeText");

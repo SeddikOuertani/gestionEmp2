@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Update Employe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+ 
+<body>
+    <div class="container my-5">
+        <h3>Update Employe</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                    <form action="#" th:action="@{/update/{id}(id=${employe.id})}" th:object="${employe}" 
+                                                                       method="post">
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="login" class="col-form-label">Login</label> 
+                                <input type="text" th:field="*{login}" th:value="*{login}" class="form-control"
+                                            id="login" placeholder="login" />
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="password" class="col-form-label">Mot de passe</label> 
+                                <input type="password" th:field="*{motDePasse}"  th:value="*{motDePasse}" class="form-control"
+                                            id="mdp" placeholder="Mot de passe" />
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="name" class="col-form-label">Nom</label> 
+                                <input type="text" th:field="*{nom}" th:value="*{nom}" class="form-control"
+                                            id="nom" placeholder="Nom" />
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="name" class="col-form-label">Prenom</label> 
+                                <input type="text" th:field="*{prenom}" th:value="*{prenom}" class="form-control"
+                                            id="prenom" placeholder="Prenom" />
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="email" class="col-form-label">email</label> 
+                                <input type="text" th:field="*{email}" th:value="*{email}" class="form-control"
+                                            id="login" placeholder="E-mail" />
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="phoneNumber" class="col-form-label">Numero de telephone</label> 
+                                <input type="text" th:field="*{numTel}" th:value="*{numTel}" class="form-control"
+                                            id="numTel" placeholder="Num Tel"/>
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="congeRestant" class="col-form-label">Conge restant</label> 
+                                <input type="text" th:field="*{congeRestant}" th:value="*{congeRestant}" class="form-control"
+                                            id="numTel" placeholder="conge restant"/>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="submit" class="btn btn-primary" value=" Save ">
+                            </div>
+ 
+                            <input type="hidden" id="id" th:field="*{id}">
+     
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+ 
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title id="pageTitle">Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="styles/loginStyles.css">
+</head>
+<body class="container">
+    <header></header>
+    <h3>Login</h3>
+    <div id="loginFormDiv" class="login-form-div">
+        <form id="loginForm" action="#" th:action="@{/login}" method="post" th:object="${employeForm}">
+            <div class="form-inner-wrap">
+                <div class="form-group">
+                    <label for="login" class="col-form-label">Nom d'utilisateur</label> 
+                    <input type="text" th:field="*{login}" class="form-control"
+                                id="login" placeholder="login" />
+                    <small id="loginErr" class="text-err"></small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="col-form-label">Mot de passe</label> 
+                    <input type="password" th:field="*{motDePasse}" class="form-control"
+                                id="mdp" placeholder="Mot de passe" />
+                    <small id="pwdErr" class="text-err"></small>
+                </div>
+
+                <div class="submitBtn">
+                    <input type="submit" class="btn btn-primary" value=" Submit ">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="scripts/loginScript.js"></script>
+</html>

@@ -1,0 +1,39 @@
+.container{
+   align-content: center;
+    margin-top: 20px;
+    background-color: rgb(224, 224, 224);
+}
+
+.submitBtn{
+    text-align: end;
+}
+
+.btn{
+    box-shadow: rgb(68, 68, 68) 1px 2px 2px;
+}
+
+.form-control{
+    width : 40vw
+}
+
+.login-form-div{
+    width : max-content;
+    box-shadow: rgba(0, 0, 0, 0.404) 2px 2px 2px;
+    background-color: white;
+    padding : 20px;
+    display: block;
+    border-radius: 10px;
+    border : 0.5px rgb(212, 212, 212) solid;
+}
+
+.inp-danger{
+    border : 0.3px red solid
+}
+
+.inp-success{
+    border : 0.3px rgb(67, 253, 83) solid
+}
+
+.text-err{
+    color : red;
+}
