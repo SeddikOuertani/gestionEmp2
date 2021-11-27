@@ -37,6 +37,10 @@ public class Permission {
 		this.heureFin = heureFin;
 		this.etat = "attendu";
 	}
+	
+	public Permission() {
+		
+	}
 
 	public Long getIdPerm() {
 		return idPerm;

@@ -19,10 +19,10 @@
 
     <div class="container links-div">
         <div>
-            <a th:href="@{/permList/{login}(login=${employe.login})}"  class="btn btn-primary"><span>Liste des permissions</span></a>
+            <a th:href="@{/home/{login}/permissions(login=${employe.login})}"  class="btn btn-primary"><span>Liste des permissions</span></a>
         </div>
         <div>
-            <a th:href="@{/congeList/{login}(login=${employe.login})}"  class="btn btn-primary"><span>Liste des congés</span></a>
+            <a th:href="@{/congeList/{id}(login=${employe.login})}"  class="btn btn-primary"><span>Liste des congés</span></a>
         </div>
     </div>
     

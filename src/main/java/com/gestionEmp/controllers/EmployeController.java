@@ -47,10 +47,17 @@ public class EmployeController {
 	@RequestMapping("/home/{login}")
 	public String listEmployeInfo(@ModelAttribute("login") String login,Model model) {
 		Employe employe = empService.findEmployeByLogin(login);
-		//List<Permission> listEmploye = empService.findAllPermissions(employe.getId());
 		model.addAttribute("employe",employe);
 		
 		return "employe_home";
+	}
+	
+	@RequestMapping("home/{login}/permissions")
+	public String showPermList(@PathVariable("login") String login, Model model) {
+		Employe employe = empService.findEmployeByLogin(login);
+		List<Permission> listPermissions = empService.findPermissionsByEmpId(employe.getId());
+		model.addAttribute("listPerm",listPermissions);
+		return "liste_permission";
 	}
 	
 	@GetMapping("edit/{id}")

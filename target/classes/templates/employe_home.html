@@ -8,7 +8,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-    <link rel="stylesheet" href="../static/styles/employeHomeStyles.css">
+    <link rel="stylesheet" th:href="@{/styles/employeHomeStyles.css}">
 </head>
 
 <body class="container">
@@ -19,10 +19,10 @@
 
     <div class="container links-div">
         <div>
-            <a th:href="@{/permList/{login}(login=${employe.login})}"  class="btn btn-primary"><span>Liste des permissions</span></a>
+            <a th:href="@{/home/{login}/permissions(login=${employe.login})}"  class="btn btn-primary"><span>Liste des permissions</span></a>
         </div>
         <div>
-            <a th:href="@{/congeList/{login}(login=${employe.login})}"  class="btn btn-primary"><span>Liste des congés</span></a>
+            <a th:href="@{/congeList/{id}(login=${employe.login})}"  class="btn btn-primary"><span>Liste des congés</span></a>
         </div>
     </div>
     

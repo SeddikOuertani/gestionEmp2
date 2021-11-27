@@ -17,14 +17,16 @@ public class EmployeService {
 	
 	@Autowired
 	private EmployeRepository empRepo;
+	
+	@Autowired
 	private PermissionRepository permRepo;
 	
 	public Employe findEmployeByLogin(String login) {
 		return empRepo.getEmployeByLogin(login);
 	}
 	
-	public List<Permission> findAllPermissions(Long id){
-		return permRepo.findAll();
+	public List<Permission> findPermissionsByEmpId(Long empId){
+		return permRepo.findPermissionsByEmpId(empId);
 	}
 	
 	public List<Employe> findEmployeByName(String name){
