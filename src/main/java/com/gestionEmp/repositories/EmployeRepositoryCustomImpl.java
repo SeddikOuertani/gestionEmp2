@@ -53,11 +53,12 @@ public class EmployeRepositoryCustomImpl implements EmployeRepositoryCustom{
 	}
 
 	public int permissionFinish(Long permId) {
+		String etat = "finis";
 		Query query = entityManager.createNativeQuery("UPDATE Permission SET etat = ?1 WHERE perm_id = ?2");
-		query.setParameter(1, permId);
+		query.setParameter(1, etat);
+		query.setParameter(2, permId);
 		
-		
-		return 0;
+		return query.executeUpdate();
 	}
 
 }
