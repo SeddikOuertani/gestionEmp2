@@ -2,7 +2,6 @@ package com.gestionEmp.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.gestionEmp.entities.Employe;
+import com.gestionEmp.entities.Permission;
 import com.gestionEmp.services.EmployeService;
 
 @Controller
@@ -43,6 +42,15 @@ public class EmployeController {
 		model.addAttribute("listEmploye",listEmploye);
 		
 		return "liste_employe";
+	}
+	
+	@RequestMapping("/home/{login}")
+	public String listEmployeInfo(@ModelAttribute("login") String login,Model model) {
+		Employe employe = empService.findEmployeByLogin(login);
+		//List<Permission> listEmploye = empService.findAllPermissions(employe.getId());
+		model.addAttribute("employe",employe);
+		
+		return "employe_home";
 	}
 	
 	@GetMapping("edit/{id}")
