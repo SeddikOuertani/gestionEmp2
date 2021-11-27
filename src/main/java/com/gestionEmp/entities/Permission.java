@@ -1,5 +1,6 @@
 package com.gestionEmp.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -20,7 +21,7 @@ public class Permission {
 	private String raison;
 	
 	@Column(name="heureDeb")
-	private Date heureDeb;
+	private String heureDeb;
 	
 	@Column(name="heureFin")
 	private Date heureFin;
@@ -31,9 +32,11 @@ public class Permission {
 	@ManyToOne
 	private Employe employe;
 	
-	public Permission(String raison, Date heureDeb, Date heureFin) {
+	private SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
+	
+	public Permission(String raison, Date heureFin) {
 		this.raison = raison;
-		this.heureDeb = heureDeb;
+		this.heureDeb = localDateFormat.format(new Date());
 		this.heureFin = heureFin;
 		this.etat = "attendu";
 	}
@@ -54,11 +57,11 @@ public class Permission {
 		this.raison = raison;
 	}
 
-	public Date getHeureDeb() {
+	public String getHeureDeb() {
 		return heureDeb;
 	}
 
-	public void setHeureDeb(Date heureDeb) {
+	public void setHeureDeb(String heureDeb) {
 		this.heureDeb = heureDeb;
 	}
 
@@ -70,7 +73,7 @@ public class Permission {
 		this.heureFin = heureFin;
 	}
 
-	public String isEtat() {
+	public String getEtat() {
 		return etat;
 	}
 
