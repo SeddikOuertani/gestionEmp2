@@ -60,6 +60,15 @@ public class EmployeController {
 		return "liste_permission";
 	}
 	
+	@RequestMapping("home/{login}/addPerm")
+	public String addNewPermission(@PathVariable("login") String login, Model model) {
+		Employe employe = empService.findEmployeByLogin(login);
+		Permission permission = new Permission();
+		model.addAttribute("employe",employe);
+		model.addAttribute("permission",permission);
+		return "new_permission";
+	}
+	
 	@GetMapping("edit/{id}")
 	public String showUpdateForm(@PathVariable("id") Long id, Model model) {
 		Employe employe = empService.get(id);
