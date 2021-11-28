@@ -59,7 +59,12 @@ public class Employe {
 	}
 	
 	public Employe() {
-		
+		this.id = 1000L;
+		this.prenom ="";
+		this.nom = "";
+		this.email = "";
+		this.numTel = "";
+		this.congeRestant = 0;
 	}
 	
 	public Long getId() {

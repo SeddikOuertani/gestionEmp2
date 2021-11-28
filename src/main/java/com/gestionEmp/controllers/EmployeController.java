@@ -89,7 +89,15 @@ public class EmployeController {
 		return "redirect:/home/"+login+"/permissions";
 	}
 	
-	@PostMapping(value="/{login}")
+	@RequestMapping(value="/loginPage")
+	public String showLoginPage(Model model) {
+		Employe employe = new Employe();
+		model.addAttribute("employe",employe);
+		
+		return "login";
+	}
+	
+	@PostMapping(value="/login")
 	public String login(@ModelAttribute("Employe") Employe employe ,@PathVariable("login") String login, Model model, BindingResult result) {
 		Employe employeFetched;
 		try {
