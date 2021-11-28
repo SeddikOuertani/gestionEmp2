@@ -92,40 +92,9 @@ public class EmployeController {
 			return "redirect:/home/"+employeFetched.getLogin();
 		}else {
 			model.addAttribute("Responsable",employeFetched);
-			return "redirect:/";
+			return "redirect:/responsable";
 		}
 	}
 	
-	@GetMapping("edit/{id}")
-	public String showUpdateForm(@PathVariable("id") Long id, Model model) {
-		Employe employe = empService.get(id);
-		model.addAttribute("employe",employe);
-		return "update_employe";
-	}
 
-	@PostMapping("update/{id}")
-	public String updateEmploye(@ModelAttribute("employe") Employe employe, @PathVariable("id") Long id, BindingResult result) {
-		if(result.hasErrors()) {
-			System.out.println("I'm in the hasErrors if block");
-			employe.setId(id);
-			return "update_employe";
-		}
-
-		System.out.println("I'm right after the if block");
-		
-		int i = empService.updateEmployeAt(id,employe);
-
-		System.out.println("I'm after the update Instruction");
-		if(i == 0) {
-			return "update_employe";
-		}else {
-			return "redirect:/";
-		}
-	}
-	
-	@GetMapping("delete/{id}")
-	public String deleteVoiture(@PathVariable("id") Long id, Model model) {	
-		empService.delete(id);
-		return "redirect:/";
-	}
 }

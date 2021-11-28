@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Employe Home</title>
+    <title>Responsable Acceuil</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
@@ -19,10 +19,13 @@
 
     <div class="container links-div">
         <div>
-            <a th:href="@{/home/{login}/permissions(login=${employe.login})}"  class="btn btn-primary"><span>Liste des permissions</span></a>
+            <a th:href="@{/responsable/empList}"  class="btn btn-primary"><span>Liste des Employe</span></a>
         </div>
         <div>
-            <a th:href="@{/home/{login}/conge(login=${employe.login})}"  class="btn btn-primary"><span>Liste des congés</span></a>
+            <a th:href="@{/responsable/permList}"  class="btn btn-primary"><span>Liste des permissions</span></a>
+        </div>
+        <div>
+            <a th:href="@{/responsable/congeList}"  class="btn btn-primary"><span>Liste des conges</span></a>
         </div>
     </div>
     
