@@ -10,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
+import java.util.Date;
 @Entity
 public class Conge {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idConge;
+	private Long id;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="dateDebut")
@@ -32,6 +32,9 @@ public class Conge {
 	
 	@Column(name="description")
 	private String description;
+	
+	@Column(name="etat")
+	private String etat;
 	
 	@ManyToOne
 	private Employe employe;
@@ -49,19 +52,20 @@ public class Conge {
 		super();
 	}
 
-	public Conge(Date dateDebut, Date dateFin, int periode, String description) {
+	public Conge(Date dateDebut, Date dateFin, int periode, String description,String etat) {
 		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.periode = periode;
 		this.description = description;
+		this.etat=etat;
 	}
 	
-	public Long getIdConge() {
-		return idConge;
+	public Long getId() {
+		return id;
 	}
-	public void setIdConge(Long idConge) {
-		this.idConge=idConge;
+	public void setId(Long id) {
+		this.id=id;
 	}
 	public Date getDateDebut() {
 		return dateDebut;
@@ -86,6 +90,14 @@ public class Conge {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getEtat() {
+		return etat;
+	}
+
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 	
 	
