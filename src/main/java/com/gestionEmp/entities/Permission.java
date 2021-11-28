@@ -35,12 +35,11 @@ public class Permission {
 	@ManyToOne
 	private Employe employe;
 	
-	private SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
-	
-	public Permission(String raison, String heureDeb, String heureFin) {
+	public Permission(String raison,String description, String heureDeb, String heureFin) {
 		this.raison = raison;
 		this.heureDeb = heureDeb;
 		this.heureFin = heureFin;
+		this.description = description;
 		this.etat = "attendu";
 	}
 	

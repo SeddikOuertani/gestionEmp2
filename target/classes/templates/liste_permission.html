@@ -26,6 +26,8 @@
                                 <thead>
                                     <tr>
                                         <th>Id permission</th>
+                                        <th>Raison</th>
+                                        <th>Description</th>
                                         <th>Heure Debut</th>
                                         <th>Heure fin</th>
                                         <th>Etat</th>
@@ -35,6 +37,8 @@
                                 <tbody>
                                     <tr th:each="permission : ${listPerm}">
                                         <td th:text="${permission.idPerm}"></td>
+                                        <td th:text="${permission.raison}"></td>
+                                        <td th:text="${permission.description}"></td>
                                         <td th:text="${permission.heureDeb}"></td>
                                         <td th:text="${permission.heureFin}"></td>
                                         <td th:text="${permission.etat}"></td>

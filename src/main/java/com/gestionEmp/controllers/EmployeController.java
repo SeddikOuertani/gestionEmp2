@@ -74,8 +74,9 @@ public class EmployeController {
 	public String savePermission(@ModelAttribute("permission") Permission permission ,@PathVariable("login") String login, Model model) {
 		Employe employe = empService.findEmployeByLogin(login);
 		model.addAttribute("employe",employe);
+		permission.setEtat("En attente");
 		empService.savePermWithEmpId(permission, employe.getId());
-		return "redirect:/home/{"+login+"}/permissions/savePerm";
+		return "redirect:/home/"+login+"/permissions";
 	}
 	
 	@GetMapping("edit/{id}")
