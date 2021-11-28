@@ -29,8 +29,10 @@ public class EmployeRepositoryCustomImpl implements EmployeRepositoryCustom{
 	public Employe getEmployeByLogin(String login) {
 		Query query = entityManager.createNativeQuery("SELECT * FROM employe WHERE login = ?",Employe.class);
 		query.setParameter(1, login);
-		
-		return (Employe) query.getSingleResult();
+		Employe employe = (Employe) query.getSingleResult();
+		System.out.println("in the EmployeCustomImpl");
+		System.out.println(employe.getMotDePasse());
+		return employe;
 	}
 
 	public int updateEmployeAt(Long id, Employe employe) {
@@ -60,5 +62,13 @@ public class EmployeRepositoryCustomImpl implements EmployeRepositoryCustom{
 		
 		return query.executeUpdate();
 	}
+
+	public String fetchEmpType(String login) {
+		Query query = entityManager.createNativeQuery("SELECT dtype FROM Employe WHERE login = ?1");
+		query.setParameter(1, login);
+		
+		return (query.getSingleResult()).toString();
+	}
+
 
 }

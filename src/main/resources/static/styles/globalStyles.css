@@ -1,0 +1,11 @@
+.back-button{
+    position: fixed;
+    right: 5px;
+    top : 1vh;    
+    margin : 20px;
+    padding : 5px;
+}
+
+.back-button .btn{
+    
+}

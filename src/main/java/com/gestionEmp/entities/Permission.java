@@ -1,5 +1,6 @@
 package com.gestionEmp.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -20,22 +21,34 @@ public class Permission {
 	private String raison;
 	
 	@Column(name="heureDeb")
-	private Date heureDeb;
+	private String heureDeb;
 	
 	@Column(name="heureFin")
-	private Date heureFin;
+	private String heureFin;
+	
+	@Column(name="description")
+	private String description;
 	
 	@Column(name="etat")
 	private String etat;
 	
+	@Column(name="validated")
+	private boolean validated;
+	
 	@ManyToOne
 	private Employe employe;
 	
-	public Permission(String raison, Date heureDeb, Date heureFin) {
+	public Permission(String raison,String description, String heureDeb, String heureFin, boolean validated) {
 		this.raison = raison;
 		this.heureDeb = heureDeb;
 		this.heureFin = heureFin;
-		this.etat = "attendu";
+		this.description = description;
+		this.etat = "En attente";
+		this.validated = false;
+	}
+	
+	public Permission() {
+		
 	}
 
 	public Long getIdPerm() {
@@ -50,23 +63,43 @@ public class Permission {
 		this.raison = raison;
 	}
 
-	public Date getHeureDeb() {
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public boolean isValidated() {
+		return validated;
+	}
+
+	public void setValidated(boolean validated) {
+		this.validated = validated;
+	}
+
+	public void setIdPerm(Long idPerm) {
+		this.idPerm = idPerm;
+	}
+
+	public String getHeureDeb() {
 		return heureDeb;
 	}
 
-	public void setHeureDeb(Date heureDeb) {
+	public void setHeureDeb(String heureDeb) {
 		this.heureDeb = heureDeb;
 	}
 
-	public Date getHeureFin() {
+	public String getHeureFin() {
 		return heureFin;
 	}
 
-	public void setHeureFin(Date heureFin) {
+	public void setHeureFin(String heureFin) {
 		this.heureFin = heureFin;
 	}
 
-	public String isEtat() {
+	public String getEtat() {
 		return etat;
 	}
 

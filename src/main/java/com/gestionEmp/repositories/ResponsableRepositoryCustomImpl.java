@@ -1,5 +1,7 @@
 package com.gestionEmp.repositories;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -7,7 +9,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gestionEmp.entities.Permission;
+import com.gestionEmp.entities.Employe;
 
 @Repository
 @Transactional(readOnly = true)
@@ -28,5 +30,11 @@ public class ResponsableRepositoryCustomImpl implements ResponsableRepositoryCus
 
 	public int valideConge(Long empId, Long permId) {
 		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Employe> getAllEmployeTypes() {
+		Query query = entityManager.createNativeQuery("SELECT * FROM Employe WHERE dtype = 'Employe'",Employe.class);
+		return (List<Employe>) query.getResultList();
 	}
 }

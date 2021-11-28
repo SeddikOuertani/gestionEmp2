@@ -62,7 +62,11 @@ public class Employe {
 	}
 	
 	public Employe() {
-		
+		this.prenom ="";
+		this.nom = "";
+		this.email = "";
+		this.numTel = "";
+		this.congeRestant = 0;
 	}
 	
 	public Long getId() {
@@ -115,14 +119,6 @@ public class Employe {
 
 	public String getEmail() {
 		return email;
-	}
-	
-	public Date getDateDernPermission() {
-		return dateDernPermission;
-	}
-	
-	public void setDateDernPermission(Date dateDernPermission) {
-		this.dateDernPermission = dateDernPermission;
 	}
 
 	public void setEmail(String email) {

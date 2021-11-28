@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gestionEmp.entities.Employe;
 import com.gestionEmp.entities.Responsable;
 import com.gestionEmp.repositories.ResponsableRepository;
 
@@ -30,5 +31,9 @@ public class ResponsableService {
 	
 	public void delete(Long id) {
 		respRepo.deleteById(id);
+	}
+	
+	public List<Employe> ListAllEmployeTypes(){
+		return respRepo.getAllEmployeTypes();
 	}
 }
