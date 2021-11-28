@@ -7,7 +7,6 @@ public class Responsable extends Employe{
 
 	public Responsable(String login, String nom, String prenom, String numTel, String email, int congeRestant) {
 		super(login, nom, prenom, numTel, email, email, congeRestant);
-		
 	}
 	
 }

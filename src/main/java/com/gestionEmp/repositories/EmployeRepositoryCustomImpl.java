@@ -61,4 +61,13 @@ public class EmployeRepositoryCustomImpl implements EmployeRepositoryCustom{
 		return query.executeUpdate();
 	}
 
+	public String fetchEmpType(String login) {
+		Query query = entityManager.createNativeQuery("SELECT dType FROM Employe WHERE login = ?",Employe.class);
+		query.setParameter(1, login);
+		
+		
+		return query.getSingleResult().toString();
+	}
+
+
 }

@@ -89,6 +89,26 @@ public class EmployeController {
 		return "redirect:/home/"+login+"/permissions";
 	}
 	
+	@PostMapping(value="/{login}")
+	public String login(@ModelAttribute("Employe") Employe employe ,@PathVariable("login") String login, Model model, BindingResult result) {
+		Employe employeFetched;
+		try {
+			employeFetched = empService.findEmployeByLogin(login);
+		}catch(Exception e) {
+			model.addAttribute("err",e.getMessage());
+			return "error_page";
+		}
+		
+		if(empService.fetchEmployeType(employeFetched.getLogin()).equals("Employe")) {
+			model.addAttribute("Employe",employeFetched);
+			return "redirect:/home/"+employeFetched.getLogin();
+		}else {
+
+			model.addAttribute("Responsable",employeFetched);
+			return "redirect:/";
+		}
+	}
+	
 	@GetMapping("edit/{id}")
 	public String showUpdateForm(@PathVariable("id") Long id, Model model) {
 		Employe employe = empService.get(id);

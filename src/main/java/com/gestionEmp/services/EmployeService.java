@@ -57,4 +57,7 @@ public class EmployeService {
 		empRepo.deleteById(id);
 	}
 	
+	public String fetchEmployeType(String login) {
+		return empRepo.fetchEmpType(login);
+	}
 }
