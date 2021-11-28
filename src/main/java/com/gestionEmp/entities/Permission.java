@@ -32,15 +32,19 @@ public class Permission {
 	@Column(name="etat")
 	private String etat;
 	
+	@Column(name="validated")
+	private boolean validated;
+	
 	@ManyToOne
 	private Employe employe;
 	
-	public Permission(String raison,String description, String heureDeb, String heureFin) {
+	public Permission(String raison,String description, String heureDeb, String heureFin, boolean validated) {
 		this.raison = raison;
 		this.heureDeb = heureDeb;
 		this.heureFin = heureFin;
 		this.description = description;
-		this.etat = "attendu";
+		this.etat = "En attente";
+		this.validated = false;
 	}
 	
 	public Permission() {
@@ -65,6 +69,14 @@ public class Permission {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public boolean isValidated() {
+		return validated;
+	}
+
+	public void setValidated(boolean validated) {
+		this.validated = validated;
 	}
 
 	public void setIdPerm(Long idPerm) {

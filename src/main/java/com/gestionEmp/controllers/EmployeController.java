@@ -84,6 +84,7 @@ public class EmployeController {
 		Employe employe = empService.findEmployeByLogin(login);
 		model.addAttribute("employe",employe);
 		permission.setEtat("En attente");
+		permission.setValidated(false);
 		empService.savePermWithEmpId(permission, employe.getId());
 		return "redirect:/home/"+login+"/permissions";
 	}

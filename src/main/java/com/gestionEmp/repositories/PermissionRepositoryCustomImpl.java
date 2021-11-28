@@ -28,14 +28,15 @@ public class PermissionRepositoryCustomImpl implements PermissionRepositoryCusto
 
 	public int saveWithEmpId(Permission perm, Long empId) {
 		Query query = entityManager.createNativeQuery("INSERT INTO Permission "
-				+ "(etat, raison, description, heure_deb, heure_fin, employe_id) "
-				+ "VALUES (?1,?2,?3,?4,?5,?6)");
+				+ "(etat, raison, description, heure_deb, heure_fin, validated, employe_id) "
+				+ "VALUES (?1,?2,?3,?4,?5,?6,?7)");
 		query.setParameter(1, perm.getEtat());
 		query.setParameter(2, perm.getRaison());
 		query.setParameter(3, perm.getDescription());
 		query.setParameter(4, perm.getHeureDeb());
 		query.setParameter(5, perm.getHeureFin());
-		query.setParameter(6, empId);
+		query.setParameter(6, perm.isValidated());
+		query.setParameter(7, empId);
 		return query.executeUpdate();
 	}
 
