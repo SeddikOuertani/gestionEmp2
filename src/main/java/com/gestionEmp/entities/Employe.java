@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Employe {
 
@@ -35,7 +37,11 @@ public class Employe {
 	
 	@Column(name="email")
 	private String email;
-
+	
+	@Column(name="dateDernPermission")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date dateDernPermission;
+	
 	@Column(name="congeRestant")
 	private int congeRestant;
 	
@@ -125,6 +131,22 @@ public class Employe {
 
 	public void setCongeRestant(int congeRestant) {
 		this.congeRestant = congeRestant;
+	}
+
+	public List<Conge> getCongeList() {
+		return congeList;
+	}
+
+	public void setCongeList(List<Conge> congeList) {
+		this.congeList = congeList;
+	}
+
+	public List<Permission> getPermList() {
+		return permList;
+	}
+
+	public void setPermList(List<Permission> permList) {
+		this.permList = permList;
 	}
 	
 	
