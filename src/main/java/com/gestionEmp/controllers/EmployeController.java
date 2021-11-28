@@ -23,27 +23,6 @@ public class EmployeController {
 	@Autowired
 	private EmployeService empService;
 	
-	@GetMapping("/addEmploye")
-	public String addEmploye(Model model) {
-		Employe employe = new Employe();
-		model.addAttribute("employeForm",employe);	
-		return "new_employe";
-	}
-	
-	@RequestMapping(value="/save", method = RequestMethod.POST)
-	public String saveEemploye(@ModelAttribute("employe") Employe employe) {
-		empService.save(employe);
-		return "redirect:/";
-	}
-	
-	@RequestMapping(value="/")
-	public String listEmploye(Model model) {
-		List<Employe> listEmploye = empService.listAll();
-		model.addAttribute("listEmploye",listEmploye);
-		
-		return "liste_employe";
-	}
-	
 	@RequestMapping("/home/{login}")
 	public String listEmployeInfo(@ModelAttribute("login") String login,Model model) {
 		Employe employe = empService.findEmployeByLogin(login);
@@ -92,21 +71,23 @@ public class EmployeController {
 	@RequestMapping(value="/loginPage")
 	public String showLoginPage(Model model) {
 		Employe employe = new Employe();
-		model.addAttribute("employe",employe);
+		
+		model.addAttribute("employeForm",employe);
 		
 		return "login";
 	}
 	
 	@PostMapping(value="/login")
-	public String login(@ModelAttribute("Employe") Employe employe ,@PathVariable("login") String login, Model model, BindingResult result) {
+	public String login(@ModelAttribute("employeForm") Employe employe , Model model, BindingResult result) {
 		Employe employeFetched;
 		try {
-			employeFetched = empService.findEmployeByLogin(login);
+			employeFetched = empService.findEmployeByLogin(employe.getLogin());
 		}catch(Exception e) {
-			model.addAttribute("err",e.getMessage());
+			model.addAttribute("err",e.getMessage()+"\n\n"+e.getLocalizedMessage());
 			return "error_page";
 		}
 		
+		System.out.println(employeFetched.getLogin());
 		if(empService.fetchEmployeType(employeFetched.getLogin()).equals("Employe")) {
 			model.addAttribute("Employe",employeFetched);
 			return "redirect:/home/"+employeFetched.getLogin();

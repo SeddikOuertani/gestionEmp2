@@ -35,10 +35,7 @@ public class Employe {
 	
 	@Column(name="email")
 	private String email;
-	
-	@Column(name="dateDernPermission")
-	private Date dateDernPermission;
-	
+
 	@Column(name="congeRestant")
 	private int congeRestant;
 	
@@ -59,7 +56,6 @@ public class Employe {
 	}
 	
 	public Employe() {
-		this.id = 1000L;
 		this.prenom ="";
 		this.nom = "";
 		this.email = "";
@@ -117,14 +113,6 @@ public class Employe {
 
 	public String getEmail() {
 		return email;
-	}
-	
-	public Date getDateDernPermission() {
-		return dateDernPermission;
-	}
-	
-	public void setDateDernPermission(Date dateDernPermission) {
-		this.dateDernPermission = dateDernPermission;
 	}
 
 	public void setEmail(String email) {
