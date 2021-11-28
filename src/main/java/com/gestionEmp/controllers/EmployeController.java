@@ -46,7 +46,7 @@ public class EmployeController {
 		List<Permission> listPermissions = empService.findPermissionsByEmpId(employe.getId());
 		model.addAttribute("employe",employe);
 		model.addAttribute("listPerm",listPermissions);
-		return "liste_permission";
+		return "liste_permission_employe";
 	}
 	
 	@RequestMapping("home/{login}/permissions/addPerm")
@@ -83,7 +83,7 @@ public class EmployeController {
 		try {
 			employeFetched = empService.findEmployeByLogin(employe.getLogin());
 		}catch(Exception e) {
-			model.addAttribute("err",e.getMessage()+"\n\n"+e.getLocalizedMessage());
+			model.addAttribute("errorMessage",e.getMessage()+"\n\n"+e.getLocalizedMessage()+"\n\n"+e.getCause());
 			return "error_page";
 		}
 		

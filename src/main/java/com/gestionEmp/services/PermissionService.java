@@ -28,6 +28,10 @@ public class PermissionService {
 		return permRepo.findAll();
 	}
 	
+	public List<Permission> listAllPermissions(){
+		return permRepo.finAllPermissions();
+	}
+	
 	public void delete(Long id) {
 		permRepo.deleteById(id);
 	}

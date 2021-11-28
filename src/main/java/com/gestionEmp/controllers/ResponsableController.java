@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gestionEmp.entities.Employe;
+import com.gestionEmp.entities.Permission;
 import com.gestionEmp.services.EmployeService;
+import com.gestionEmp.services.PermissionService;
 import com.gestionEmp.services.ResponsableService;
 
 @Controller
@@ -91,5 +93,14 @@ public class ResponsableController {
 			return "error_page";
 		}
 	}
+	
+	@RequestMapping("/responsable/permList")
+	public String listPermission(Model model) {
+		List<Permission> listPermission = respService.listAllPerms();
+		model.addAttribute("listPermission",listPermission);
+		
+		return "liste_permission_responsable";
+	}
+	
 	
 }
