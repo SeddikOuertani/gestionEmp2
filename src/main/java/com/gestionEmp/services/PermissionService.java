@@ -24,10 +24,6 @@ public class PermissionService {
 		permRepo.save(permission);
 	}
 	
-	public void saveWithEmpId(Permission permission, Long empId) {
-		permRepo.saveWithEmpId(permission, empId);
-	}
-	
 	public List<Permission> listAll(){
 		return permRepo.findAll();
 	}

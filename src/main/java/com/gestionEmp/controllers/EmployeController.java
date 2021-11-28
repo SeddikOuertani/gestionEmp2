@@ -70,12 +70,12 @@ public class EmployeController {
 		return "new_permission";
 	}
 	
-	@PostMapping(value="home/{login}/permissions/addPerm")
+	@PostMapping(value="home/{login}/permissions/savePerm")
 	public String savePermission(@ModelAttribute("permission") Permission permission ,@PathVariable("login") String login, Model model) {
 		Employe employe = empService.findEmployeByLogin(login);
 		model.addAttribute("employe",employe);
-		model.addAttribute("permission",permission);
-		return "new_permission";
+		empService.savePermWithEmpId(permission, employe.getId());
+		return "redirect:/home/{"+login+"}/permissions/savePerm";
 	}
 	
 	@GetMapping("edit/{id}")

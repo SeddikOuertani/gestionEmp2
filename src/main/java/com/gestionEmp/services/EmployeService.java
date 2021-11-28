@@ -25,6 +25,10 @@ public class EmployeService {
 		return empRepo.getEmployeByLogin(login);
 	}
 	
+	public int savePermWithEmpId(Permission permission, Long empId) {
+		return permRepo.saveWithEmpId(permission, empId);
+	}
+	
 	public List<Permission> findPermissionsByEmpId(Long empId){
 		return permRepo.findPermissionsByEmpId(empId);
 	}

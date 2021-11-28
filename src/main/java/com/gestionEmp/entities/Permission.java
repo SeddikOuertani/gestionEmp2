@@ -23,11 +23,11 @@ public class Permission {
 	@Column(name="heureDeb")
 	private String heureDeb;
 	
+	@Column(name="heureFin")
+	private String heureFin;
+	
 	@Column(name="description")
 	private String description;
-	
-	@Column(name="heureFin")
-	private Date heureFin;
 	
 	@Column(name="etat")
 	private String etat;
@@ -37,9 +37,9 @@ public class Permission {
 	
 	private SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
 	
-	public Permission(String raison, Date heureFin) {
+	public Permission(String raison, String heureDeb, String heureFin) {
 		this.raison = raison;
-		this.heureDeb = localDateFormat.format(new Date());
+		this.heureDeb = heureDeb;
 		this.heureFin = heureFin;
 		this.etat = "attendu";
 	}
@@ -80,11 +80,11 @@ public class Permission {
 		this.heureDeb = heureDeb;
 	}
 
-	public Date getHeureFin() {
+	public String getHeureFin() {
 		return heureFin;
 	}
 
-	public void setHeureFin(Date heureFin) {
+	public void setHeureFin(String heureFin) {
 		this.heureFin = heureFin;
 	}
 

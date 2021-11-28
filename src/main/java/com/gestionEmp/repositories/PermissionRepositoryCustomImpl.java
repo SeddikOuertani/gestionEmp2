@@ -36,7 +36,7 @@ public class PermissionRepositoryCustomImpl implements PermissionRepositoryCusto
 		query.setParameter(4, perm.getHeureDeb());
 		query.setParameter(5, perm.getHeureFin());
 		query.setParameter(6, empId);
-		return query.executeUpdate();)
+		return query.executeUpdate();
 	}
 
 }
