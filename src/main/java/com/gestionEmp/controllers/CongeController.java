@@ -35,8 +35,6 @@ public class CongeController {
 		conge.setEmploye(employe);
 		model.addAttribute("congeForm",conge);	
 		model.addAttribute("login",login);
-		
-		
 		return "new_conge";
 	}
 	@RequestMapping(value="/save", method = RequestMethod.POST)
