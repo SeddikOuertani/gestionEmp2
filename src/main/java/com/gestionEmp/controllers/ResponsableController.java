@@ -26,7 +26,7 @@ public class ResponsableController {
 	@GetMapping("/addEmploye")
 	public String addEmploye(Model model) {
 		Employe employe = new Employe();
-		model.addAttribute("employeForm",employe);	
+		model.addAttribute("employeForm",employe);
 		return "new_employe";
 	}
 	

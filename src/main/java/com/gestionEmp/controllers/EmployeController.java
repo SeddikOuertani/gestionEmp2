@@ -87,12 +87,10 @@ public class EmployeController {
 			return "error_page";
 		}
 		
-		System.out.println(employeFetched.getLogin());
 		if(empService.fetchEmployeType(employeFetched.getLogin()).equals("Employe")) {
 			model.addAttribute("Employe",employeFetched);
 			return "redirect:/home/"+employeFetched.getLogin();
 		}else {
-
 			model.addAttribute("Responsable",employeFetched);
 			return "redirect:/";
 		}
