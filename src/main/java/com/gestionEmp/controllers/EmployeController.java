@@ -34,6 +34,7 @@ public class EmployeController {
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 	public String saveEemploye(@ModelAttribute("employe") Employe employe) {
 		empService.save(employe);
+		
 		return "redirect:/";
 	}
 	

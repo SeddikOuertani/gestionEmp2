@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Conge {
 	
@@ -16,14 +18,17 @@ public class Conge {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idConge;
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="dateDebut")
 	private Date dateDebut;
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="dateFin")
 	private Date dateFin;
 	
+	//nombre de jour !!
 	@Column(name="periode")
-	private Date periode;
+	private int periode;
 	
 	@Column(name="description")
 	private String description;
@@ -31,7 +36,20 @@ public class Conge {
 	@ManyToOne
 	private Employe employe;
 	
-	public Conge(Date dateDebut, Date dateFin, Date periode, String description) {
+	
+	public Employe getEmploye() {
+		return employe;
+	}
+
+	public void setEmploye(Employe employe) {
+		this.employe = employe;
+	}
+
+	public Conge() {
+		super();
+	}
+
+	public Conge(Date dateDebut, Date dateFin, int periode, String description) {
 		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
@@ -41,6 +59,9 @@ public class Conge {
 	
 	public Long getIdConge() {
 		return idConge;
+	}
+	public void setIdConge(Long idConge) {
+		this.idConge=idConge;
 	}
 	public Date getDateDebut() {
 		return dateDebut;
@@ -54,10 +75,10 @@ public class Conge {
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
-	public Date getPeriode() {
+	public int getPeriode() {
 		return periode;
 	}
-	public void setPeriode(Date periode) {
+	public void setPeriode(int periode) {
 		this.periode = periode;
 	}
 	public String getDescription() {
