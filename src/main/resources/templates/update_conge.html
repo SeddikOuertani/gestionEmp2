@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Ajout Employe</title>
+    <title>Modifier Demande Conge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
@@ -12,30 +12,31 @@
  
 <body>
     <div class="container my-5">
-        <h3>Ajout Demande Conge</h3>
+        <h3>Modifier Demande Conge</h3>
         <div class="card">
             <div class="card-body">
                 <div class="col-md-10">
-                    <form action="#" th:action="@{/home/{login}/conge/save(login=${login})}" th:object="${congeForm}" 
+                    <form action="#" th:action="@{/home/{login}/conge/save(login=${login})}" th:object="${conge}" 
                                                                        method="post">
                         <div class="row">
                             <div class="form-group col-md-8">
                                 <label for="dateDebut" class="col-form-label">Date Debut</label> 
-                                <input type="date" th:field="*{dateDebut}" class="form-control"
+                                <input type="date" th:field="*{dateDebut}" th:value="*{dateDebut}" class="form-control"
                                             id="dateDebut" placeholder="Date Debut" />
                             </div>
                             
                             <div class="form-group col-md-8">
                                 <label for="dateFin" class="col-form-label">Date Fin</label> 
-                                <input type="date" th:field="*{dateFin}" class="form-control"
+                                <input type="date" th:field="*{dateFin}" th:value="*{dateFin}" class="form-control"
                                             id="dateFin" placeholder="Date Fin" />
                             </div>
                             
                             <div class="form-group col-md-8">
                                 <label for="description" class="col-form-label">Description</label> 
-                                <input type="text" th:field="*{description}" class="form-control"
+                                <input type="text" th:field="*{description}" th:value="*{description}" class="form-control"
                                             id="description" placeholder="description" />
                             </div>
+                            
                             
                            <!--<div class="form-group col-md-8">
                                 <label for="name" class="col-form-label">listes des cong�s</label> 
@@ -52,7 +53,7 @@
 										th:value="${permission.idPerm}" th:text="${permission.idPerm}" />
 								</select>
 							</div>!-->
-							
+							<input type="hidden" id="ic" th:value="*{idConge}" th:field="*{idConge}">
  							<input type="hidden" id="employe_id" th:value="*{employe.id}" th:field="*{employe.id}">
                            
                             <div class="col-md-6">
