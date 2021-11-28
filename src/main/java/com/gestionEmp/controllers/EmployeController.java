@@ -61,7 +61,7 @@ public class EmployeController {
 		return "liste_permission";
 	}
 	
-	@RequestMapping("home/{login}/addPerm")
+	@RequestMapping("home/{login}/permissions/addPerm")
 	public String addNewPermission(@PathVariable("login") String login, Model model) {
 		Employe employe = empService.findEmployeByLogin(login);
 		Permission permission = new Permission();

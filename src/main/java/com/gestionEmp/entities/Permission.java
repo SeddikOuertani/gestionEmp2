@@ -20,6 +20,9 @@ public class Permission {
 	@Column(name="raison")
 	private String raison;
 	
+	@Column(name="description")
+	private String description;
+	
 	@Column(name="heureDeb")
 	private String heureDeb;
 	
@@ -51,6 +54,18 @@ public class Permission {
 
 	public String getRaison() {
 		return raison;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setIdPerm(Long idPerm) {
+		this.idPerm = idPerm;
 	}
 
 	public void setRaison(String raison) {
