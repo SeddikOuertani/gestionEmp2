@@ -35,8 +35,6 @@ public class CongeController {
 		conge.setEmploye(employe);
 		model.addAttribute("congeForm",conge);	
 		model.addAttribute("login",login);
-		
-		
 		return "new_conge";
 	}
 	@RequestMapping(value="/save", method = RequestMethod.POST)
@@ -51,20 +49,20 @@ public class CongeController {
 		List<Conge> listConge = employeService.findEmployeByLogin(login).getCongeList();
 		model.addAttribute("listConge",listConge);
 		model.addAttribute("login",login);
-		
 		return "liste_conge";
 	}
 	@GetMapping("/delete/{id}")
 	public String deleteConge(@PathVariable("id") Long id, Model model,@PathVariable("login") String login) {	
 		congeService.delete(id);
-		return "redirect:/employe/"+login+"/conge";
+		return "redirect:/home/"+login+"/conge";
 	}
-	@PostMapping("/update/{id}")
+	@GetMapping("/update/{id}")
 	public String updateConge(@PathVariable("login") String login,@PathVariable("id") Long id,Model model) {
 		
 		Conge conge = congeService.get(id);
 		model.addAttribute("conge",conge);
-		return "redirect:/employe/"+login+"/conge/save";
+		model.addAttribute("login",login);
+		return "update_conge";
 		
 	}
 }
