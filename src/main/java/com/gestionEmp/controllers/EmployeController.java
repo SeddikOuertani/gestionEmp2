@@ -52,6 +52,15 @@ public class EmployeController {
 		return "employe_home";
 	}
 	
+	@RequestMapping("home/{login}/conges")
+	public String showCongeList(@PathVariable("login") String login, Model model) {
+		Employe employe = empService.findEmployeByLogin(login);
+		model.addAttribute("employe",employe);
+		//List<Permission> listConges = empService.findPermissionsByEmpId(employe.getId());
+		//model.addAttribute("listConges",listConges);
+		return "liste_conges";
+	}
+	
 	@RequestMapping("home/{login}/permissions")
 	public String showPermList(@PathVariable("login") String login, Model model) {
 		Employe employe = empService.findEmployeByLogin(login);
