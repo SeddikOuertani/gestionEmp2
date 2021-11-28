@@ -14,7 +14,7 @@
 <body class="container">
 
     <header class="header">
-        <h3 class="title">Home</h3>
+        <h3 class="title">Acceuil</h3>
     </header>
 
     <div class="container links-div">
@@ -22,7 +22,7 @@
             <a th:href="@{/home/{login}/permissions(login=${employe.login})}"  class="btn btn-primary"><span>Liste des permissions</span></a>
         </div>
         <div>
-            <a th:href="@{/congeList/{id}(login=${employe.login})}"  class="btn btn-primary"><span>Liste des congés</span></a>
+            <a th:href="@{/home/{login}/conge(login=${employe.login})}"  class="btn btn-primary"><span>Liste des congés</span></a>
         </div>
     </div>
     

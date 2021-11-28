@@ -46,7 +46,7 @@ public class EmployeController {
 		List<Permission> listPermissions = empService.findPermissionsByEmpId(employe.getId());
 		model.addAttribute("employe",employe);
 		model.addAttribute("listPerm",listPermissions);
-		return "liste_permission";
+		return "liste_permission_employe";
 	}
 	
 	@RequestMapping("home/{login}/permissions/addPerm")
@@ -83,51 +83,18 @@ public class EmployeController {
 		try {
 			employeFetched = empService.findEmployeByLogin(employe.getLogin());
 		}catch(Exception e) {
-			model.addAttribute("err",e.getMessage()+"\n\n"+e.getLocalizedMessage());
+			model.addAttribute("errorMessage",e.getMessage()+"\n\n"+e.getLocalizedMessage()+"\n\n"+e.getCause());
 			return "error_page";
 		}
 		
-		System.out.println(employeFetched.getLogin());
 		if(empService.fetchEmployeType(employeFetched.getLogin()).equals("Employe")) {
 			model.addAttribute("Employe",employeFetched);
 			return "redirect:/home/"+employeFetched.getLogin();
 		}else {
-
 			model.addAttribute("Responsable",employeFetched);
-			return "redirect:/";
+			return "redirect:/responsable";
 		}
 	}
 	
-	@GetMapping("edit/{id}")
-	public String showUpdateForm(@PathVariable("id") Long id, Model model) {
-		Employe employe = empService.get(id);
-		model.addAttribute("employe",employe);
-		return "update_employe";
-	}
 
-	@PostMapping("update/{id}")
-	public String updateEmploye(@ModelAttribute("employe") Employe employe, @PathVariable("id") Long id, BindingResult result) {
-		if(result.hasErrors()) {
-			System.out.println("I'm in the hasErrors if block");
-			employe.setId(id);
-			return "update_employe";
-		}
-
-		System.out.println("I'm right after the if block");
-		
-		int i = empService.updateEmployeAt(id,employe);
-
-		System.out.println("I'm after the update Instruction");
-		if(i == 0) {
-			return "update_employe";
-		}else {
-			return "redirect:/";
-		}
-	}
-	
-	@GetMapping("delete/{id}")
-	public String deleteVoiture(@PathVariable("id") Long id, Model model) {	
-		empService.delete(id);
-		return "redirect:/";
-	}
 }

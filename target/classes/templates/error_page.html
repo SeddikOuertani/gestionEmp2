@@ -6,10 +6,12 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Error</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
-<body>
-    <p>Non Trouvé !!</p>
+<body class="container">
+    <h3 style="margin : 20px">Error</h3>
+    <input hidden type="text" id="inputHidden" th:value="${errorMessage}"/>
+    <p id="errPara"></p>
 </body>
+<script th:src="@{/scripts/errorPageScript.js}"></script>
 </html>

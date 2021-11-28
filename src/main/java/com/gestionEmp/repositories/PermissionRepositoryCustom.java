@@ -8,4 +8,5 @@ public interface PermissionRepositoryCustom {
 
 	List<Permission> findPermissionsByEmpId(Long empId);
 	int saveWithEmpId(Permission perm, Long empId);
+	List<Permission> finAllPermissions();
 }
