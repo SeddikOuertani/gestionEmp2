@@ -31,4 +31,8 @@ public class CongeService {
 	public void delete(Long id) {
 		congeRepo.deleteById(id);
 	}
+	public void changeEtat(long id,String etat) {
+		Conge conge = congeRepo.findById(id).get();
+		conge.setEtat(etat);
+	}
 }

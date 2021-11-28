@@ -36,7 +36,7 @@
                                 <input type="text" th:field="*{description}" th:value="*{description}" class="form-control"
                                             id="description" placeholder="description" />
                             </div>
-                            
+                            <input type="hidden" id="etat" value="enCours" th:field="*{etat}">
                             
                            <!--<div class="form-group col-md-8">
                                 <label for="name" class="col-form-label">listes des cong�s</label> 
@@ -53,7 +53,8 @@
 										th:value="${permission.idPerm}" th:text="${permission.idPerm}" />
 								</select>
 							</div>!-->
-							<input type="hidden" id="ic" th:value="*{idConge}" th:field="*{idConge}">
+							<input type="hidden" id="etat" th:value="enCours" th:field="*{etat}">
+							<input type="hidden" id="id" th:value="*{id}" th:field="*{id}">
  							<input type="hidden" id="employe_id" th:value="*{employe.id}" th:field="*{employe.id}">
                            
                             <div class="col-md-6">
