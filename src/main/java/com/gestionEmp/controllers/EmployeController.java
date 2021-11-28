@@ -61,10 +61,18 @@ public class EmployeController {
 		return "liste_permission";
 	}
 	
-	@RequestMapping("home/{login}/addPerm")
+	@RequestMapping("home/{login}/permissions/addPerm")
 	public String addNewPermission(@PathVariable("login") String login, Model model) {
 		Employe employe = empService.findEmployeByLogin(login);
 		Permission permission = new Permission();
+		model.addAttribute("employe",employe);
+		model.addAttribute("permission",permission);
+		return "new_permission";
+	}
+	
+	@PostMapping(value="home/{login}/permissions/addPerm")
+	public String savePermission(@ModelAttribute("permission") Permission permission ,@PathVariable("login") String login, Model model) {
+		Employe employe = empService.findEmployeByLogin(login);
 		model.addAttribute("employe",employe);
 		model.addAttribute("permission",permission);
 		return "new_permission";
