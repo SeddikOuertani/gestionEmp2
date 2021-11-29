@@ -29,7 +29,7 @@ public class PermissionService {
 	}
 	
 	public List<Permission> listAllPermissions(){
-		return permRepo.finAllPermissions();
+		return permRepo.findAllPermissions();
 	}
 	
 	public void delete(Long id) {

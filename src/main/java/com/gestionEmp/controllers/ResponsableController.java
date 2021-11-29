@@ -1,5 +1,6 @@
 package com.gestionEmp.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class ResponsableController {
 	private ResponsableService respService; 
 	
 	@Autowired
+	private PermissionService permService;
+	
+	@Autowired
 	private EmployeService empService;
 
 	@GetMapping("/responsable/empList/addEmploye")
@@ -36,7 +40,7 @@ public class ResponsableController {
 	}
 	
 	@RequestMapping(value="/responsable/empList/addEmploye/save", method = RequestMethod.POST)
-	public String saveEemploye(@ModelAttribute("employe") Employe employe) {
+	public String saveEmploye(@ModelAttribute("employe") Employe employe) {
 		empService.save(employe);
 		return "redirect:/responsable";
 	}
@@ -94,10 +98,11 @@ public class ResponsableController {
 		}
 	}
 	
-	@RequestMapping("/responsable/permList")
+	@GetMapping("/responsable/permList")
 	public String listPermission(Model model) {
+		
 		List<Permission> listPermission = respService.listAllPerms();
-		model.addAttribute("listPermission",listPermission);
+		model.addAttribute("listPerm",listPermission);
 		
 		return "liste_permission_responsable";
 	}

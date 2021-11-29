@@ -1,6 +1,5 @@
 package com.gestionEmp.services;
 
-import java.security.Permissions;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class ResponsableService {
 	}
 	
 	public List<Permission> listAllPerms(){
-		return permRepo.finAllPermissions();
+		return permRepo.findAllPermissions();
 	}
 	
 	public void save(Responsable responsable) {

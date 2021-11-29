@@ -15,7 +15,7 @@
     <div class="container my-2">
         <div class="card">
             <div class="card-body">
-                <div th:switch="${listPermission}" class="container my-5">
+                <div th:switch="${listPerm}" class="container my-5">
                     <p class="my-5">
                         <h3>Liste des Permission</h3>
                     </p>
@@ -25,21 +25,19 @@
                             <table class="table table-striped table-responsive-md">
                                 <thead>
                                     <tr>
-                                        <th>Id permission</th>
+                                        <th>Id</th>
                                         <th>Raison</th>
                                         <th>Description</th>
                                         <th>Heure Debut</th>
                                         <th>Heure fin</th>
                                         <th>Etat</th>
                                         <th>Permis</th>
-                                        <th>Validation</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="permission : ${listPermisson}">
+                                    <tr th:each="permission : ${listPerm}">
                                         <td th:text="${permission.idPerm}"></td>
                                         <td th:text="${permission.raison}"></td>
-                                        <td th:text="${permission.employe.id}"></td>
                                         <td th:text="${permission.description}"></td>
                                         <td th:text="${permission.heureDeb}"></td>
                                         <td th:text="${permission.heureFin}"></td>
@@ -55,11 +53,11 @@
                 
             </div>
         </div>
-        
+        <input type="text" hidden id="inpTest">
         <div class="back-button">
             <a class="btn btn-primary" th:href="@{/responsable}"><i class="fa fa-arrow-left"></i> </a>
         </div>
     </div>
 </body>
- 
+ <script th:src="@{/scripts/testPermListRespScript.js}"></script>
 </html>

@@ -10,8 +10,9 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Permission {
 
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPerm;
 	
 	@Column(name="raison")

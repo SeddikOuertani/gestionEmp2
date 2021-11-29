@@ -19,7 +19,7 @@ public class PermissionRepositoryCustomImpl implements PermissionRepositoryCusto
 	private EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
-	public List<Permission> finAllPermissions() {
+	public List<Permission> findAllPermissions() {
 		Query query = entityManager.createNativeQuery("SELECT * FROM Permission",Permission.class);
 		
 		return (List<Permission>) query.getResultList();
