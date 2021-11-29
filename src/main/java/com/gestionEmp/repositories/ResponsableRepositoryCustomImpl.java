@@ -39,12 +39,4 @@ public class ResponsableRepositoryCustomImpl implements ResponsableRepositoryCus
 		return (List<Employe>) query.getResultList();
 	}
 
-	public String findEmpByPerm(Long permId) {
-		Query query = entityManager.createNativeQuery(
-				"SELECT Emp.login FROM Employe Emp, Permission Perm "
-				+ "WHERE Emp.id = Permission.employe_id AND Perm.id_perm = ?");
-		
-		query.setParameter(1, permId);
-		return query.getSingleResult().toString();
-	}
 }

@@ -10,5 +10,4 @@ public interface ResponsableRepositoryCustom {
 	int validePermission(Long permId);
 	int valideConge(Long empId, Long permId);
 	List<Employe> getAllEmployeTypes();
-	String findEmpByPerm(Long permId);
 }

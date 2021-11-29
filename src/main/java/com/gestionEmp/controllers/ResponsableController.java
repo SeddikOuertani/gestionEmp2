@@ -126,22 +126,33 @@ public class ResponsableController {
 		return "redirect:/responsable/congeList";
 	}
 	
-	@RequestMapping("/responsable/congeList")
+	/*@RequestMapping("/responsable/congeList")
 	public String listConge(Model model) {
 		List<Conge> listConge = congeService.listByEtat("enCours");
 		model.addAttribute("listConge",listConge);
 		
 		return "consult_conge";
-	}
+	}*/
 	
-	
-	@GetMapping("/responsable/permList/{permId}")
-	@ResponseBody
-	public String getEmpByPerm(@PathVariable("permId") Long permId) {
+	@GetMapping("/responsable/permList/validate_{idPerm}")
+	public String validatePerm(@PathVariable("idPerm") Long idPerm, Model model) {
 		
-		return respService.getEmpByPerm(permId);	
+		Permission perm = permService.get(idPerm);
+		perm.setValidated(true);
+		perm.setEtat("en cours");
+		permService.save(perm);
+		return "redirect:/responsable/permList";
 	}
 	
+	@GetMapping("/responsable/permList/suspendre_{idPerm}")
+	public String suspendPerm(@PathVariable("idPerm") Long idPerm, Model model) {
+		
+		Permission perm = permService.get(idPerm);
+		perm.setValidated(false);
+		perm.setEtat("suspendu");
+		permService.save(perm);
+		return "redirect:/responsable/permList";
+	}
 	
 }
 

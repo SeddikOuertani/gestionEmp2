@@ -68,6 +68,14 @@ public class Permission {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public Employe getEmploye() {
+		return employe;
+	}
+
+	public void setEmploye(Employe employe) {
+		this.employe = employe;
+	}
 
 	public boolean isValidated() {
 		return validated;
