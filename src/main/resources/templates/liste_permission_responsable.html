@@ -35,36 +35,38 @@
                                         <th>Employe </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr th:each="permission : ${listPerm}">
-                                        <td th:text="${permission.idPerm}"></td>
-                                        <td th:text="${permission.raison}"></td>
-                                        <td>
-                                            <textarea 
-                                                disabled
-                                                class="form-control" 
-                                                th:text="${permission.description}">
-                                            </textarea>
-                                        </td>
-                                        <td th:text="${permission.heureDeb}"></td>
-                                        <td th:text="${permission.heureFin}"></td>
-                                        <td th:text="${permission.etat}"></td>
-                                        <td th:text="${permission.validated}"></td>
-                                        <td th:text="${permission.employe.login}"></td>
-                                        <td>
-                                            <a
-                                                    class="row col btn btn-success"
-                                                    th:href="@{/responsable/permList/validate_{idPerm}(idPerm=${permission.idPerm})}">
-                                                Validate
-                                            </a>
-                                            <a
-                                                    class="row col btn btn-danger"
-                                                    th:href="@{/responsable/permList/suspendre_{idPerm}(idPerm=${permission.idPerm})}">
-                                                Suspendre
-                                            </a>
-                                            
-                                        </td>
-                                    </tr>
+                                <tbody id="tbodyPermList">
+                                    <div th:each="permission : ${listPerm}">
+                                        <tr th:id="${permission.validated}">
+                                            <td th:text="${permission.idPerm}"></td>
+                                            <td th:text="${permission.raison}"></td>
+                                            <td>
+                                                <textarea 
+                                                    disabled
+                                                    class="form-control" 
+                                                    th:text="${permission.description}">
+                                                </textarea>
+                                            </td>
+                                            <td th:text="${permission.heureDeb}"></td>
+                                            <td th:text="${permission.heureFin}"></td>
+                                            <td th:text="${permission.etat}"></td>
+                                            <td th:text="${permission.validated}"></td>
+                                            <td th:text="${permission.employe.login}"></td>
+                                            <td>
+                                                <a
+                                                        class="row col btn btn-success"
+                                                        th:href="@{/responsable/permList/validate_{idPerm}(idPerm=${permission.idPerm})}">
+                                                    Valider
+                                                </a>
+                                                <a
+                                                        class="row col btn btn-danger"
+                                                        th:href="@{/responsable/permList/suspendre_{idPerm}(idPerm=${permission.idPerm})}">
+                                                    Suspendre
+                                                </a>
+                                                
+                                            </td>
+                                        </tr>
+                                    </tdiv>
                                 </tbody>
                             </table>
                         </div>
@@ -80,5 +82,5 @@
         </div>
     </div>
 </body>
- <script th:src="@{/scripts/testPermListRespScript.js}"></script>
+ <script th:src="@{/scripts/PermListRespScript.js}"></script>
 </html>
