@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.gestionEmp.entities.Conge;
 
 @Repository
-public interface CongeRepository extends JpaRepository<Conge, Long> {
-
+public interface CongeRepository extends JpaRepository<Conge, Long>, CongeRepositoryCustom {
 	
 	
 }

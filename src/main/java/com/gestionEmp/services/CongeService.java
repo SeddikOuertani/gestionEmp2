@@ -35,4 +35,7 @@ public class CongeService {
 		Conge conge = congeRepo.findById(id).get();
 		conge.setEtat(etat);
 	}
+	public List<Conge> listByEtat(String etat){
+		return congeRepo.getListCongeByEtat(etat);
+	}
 }
