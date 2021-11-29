@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gestionEmp.entities.Conge;
 import com.gestionEmp.entities.Employe;
 import com.gestionEmp.entities.Permission;
+import com.gestionEmp.services.CongeService;
 import com.gestionEmp.services.EmployeService;
 import com.gestionEmp.services.PermissionService;
 import com.gestionEmp.services.ResponsableService;
@@ -33,6 +35,8 @@ public class ResponsableController {
 	
 	@Autowired
 	private EmployeService empService;
+	@Autowired
+	private CongeService congeService; 
 
 	@GetMapping("/responsable/empList/addEmploye")
 	public String addEmploye(Model model) {
@@ -107,6 +111,27 @@ public class ResponsableController {
 		model.addAttribute("listPerm",listPermission);
 		
 		return "liste_permission_responsable";
+	}
+	@GetMapping("/responsable/conge/{id}/valider")
+		public String validerConge(@PathVariable("id") long id) {
+			congeService.changeEtat(id, "valider");
+			System.out.println("Refuser");
+			return "redirect:/responsable/congeList";
+		}
+	@GetMapping("/responsable/conge/{id}/refuser")
+	public String refuserConge(@PathVariable("id") long id) {
+		
+		congeService.changeEtat(id, "refuser");
+		System.out.println("Refuser");
+		return "redirect:/responsable/congeList";
+	}
+	
+	@RequestMapping("/responsable/congeList")
+	public String listConge(Model model) {
+		List<Conge> listConge = congeService.listByEtat("enCours");
+		model.addAttribute("listConge",listConge);
+		
+		return "consult_conge";
 	}
 	
 	

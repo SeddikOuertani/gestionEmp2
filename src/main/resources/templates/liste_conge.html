@@ -27,10 +27,11 @@
                             <tr>
                                 <th>Nom</th>
                                 <th>Prenom</th>
-                                <th>Date Debut Cong�</th>
-                                <th>Date Fin Cong�</th>
+                                <th>Date Debut Conge</th>
+                                <th>Date Fin Conge</th>
                                 <th>Period</th>
                                 <th>Description</th>
+                                <th>Etat</th>
                                 <th></th>
                                 <th></th>
                            
@@ -44,15 +45,16 @@
                                 <td th:text="${conge.dateFin}"></td>                              
                                 <td th:text="${conge.periode}"></td>
                                 <td th:text="${conge.description}"></td>
+                                <td th:text="${conge.etat}"></td>
                                 
                                 <td>
-                                    <a th:href="@{'/home/'+${login}+'/conge/update/'+${conge.idConge}}"
+                                    <a th:href="@{'/home/'+${login}+'/conge/update/'+${conge.id}}"
                                              class="btn btn-primary">
                                         <i class="fas fa-user-edit ml-2"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a th:href="@{'/home/'+${login}+'/conge/delete/'+${conge.idConge}}"
+                                    <a th:href="@{'/home/'+${login}+'/conge/delete/'+${conge.id}}"
                                               class="btn btn-primary">
                                         <i class="fas fa-user-times ml-2"></i>
                                     </a>
