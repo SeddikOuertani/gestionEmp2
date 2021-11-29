@@ -30,6 +30,10 @@ public class ResponsableService {
 		return permRepo.findAllPermissions();
 	}
 	
+	public String getEmpByPerm(Long permId) {
+		return respRepo.findEmpByPerm(permId);
+	}
+	
 	public void save(Responsable responsable) {
 		respRepo.save(responsable);
 	}

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gestionEmp.entities.Employe;
+import com.gestionEmp.entities.Permission;
 
 @Repository
 @Transactional(readOnly = true)
@@ -36,5 +37,14 @@ public class ResponsableRepositoryCustomImpl implements ResponsableRepositoryCus
 	public List<Employe> getAllEmployeTypes() {
 		Query query = entityManager.createNativeQuery("SELECT * FROM Employe WHERE dtype = 'Employe'",Employe.class);
 		return (List<Employe>) query.getResultList();
+	}
+
+	public String findEmpByPerm(Long permId) {
+		Query query = entityManager.createNativeQuery(
+				"SELECT Emp.login FROM Employe Emp, Permission Perm "
+				+ "WHERE Emp.id = Permission.employe_id AND Perm.id_perm = ?");
+		
+		query.setParameter(1, permId);
+		return query.getSingleResult().toString();
 	}
 }

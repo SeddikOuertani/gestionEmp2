@@ -32,6 +32,7 @@
                                         <th>Heure fin</th>
                                         <th>Etat</th>
                                         <th>Permis</th>
+                                        <th>Employe</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,6 +44,12 @@
                                         <td th:text="${permission.heureFin}"></td>
                                         <td th:text="${permission.etat}"></td>
                                         <td th:text="${permission.validated}"></td>
+                                        <td>
+                                            <a 
+                                                th:text="${/responsable/permList/{permId}(permId=${permission.idPerm})}" 
+                                                class="btn btn-primary"
+                                                href="#">
+                                            </a></td>
                                     </tr>
                                 </tbody>
                             </table>
