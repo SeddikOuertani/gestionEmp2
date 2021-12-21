@@ -27,10 +27,11 @@ public class CongeController {
 	
 	@GetMapping("/add")
 	public String addConge(Model model ,@PathVariable("login") String login) {
-		long idEmploye = employeService.findEmployeByLogin(login).getId();
+		Employe employe = employeService.findEmployeByLogin(login);
+		if(employe.getCongeRestant()<1) {
+			return "redirect:/home/"+login+"/conge";
+		}
 		Conge conge = new Conge();
-		Employe employe = new Employe();
-		employe.setId(idEmploye);
 		conge.setEmploye(employe);
 		model.addAttribute("congeForm",conge);	
 		model.addAttribute("login",login);
@@ -39,25 +40,30 @@ public class CongeController {
 	}
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 	public String saveConge(@ModelAttribute("conge") Conge conge,@PathVariable("login") String login) {
-		conge.setEtat("enCours");
-		
-		double diff = conge.getDateFin().getTime() - conge.getDateDebut().getTime();
-		System.out.println("diff "+diff);
-		int period = (int)Math.floor(diff/(24 * 60 * 60 * 1000));
-		
-		System.out.println("Period "+period);
-		conge.setPeriode(period);
-		
-		congeService.save(conge);
-		
+		if(conge.getEmploye().getCongeRestant()<1) {
+			return "redirect:/home/"+login+"/conge";
+		}
+		if(conge.getDateDebut().getTime()<conge.getDateFin().getTime()) {
+			conge.setEtat("enCours");
+			double diff = conge.getDateFin().getTime() - conge.getDateDebut().getTime();
+			System.out.println("diff "+diff);
+			int period = (int)Math.floor(diff/(24 * 60 * 60 * 1000));
+			
+			System.out.println("Period "+period);
+			conge.setPeriode(period);
+			
+			congeService.save(conge);	
+		}
 		return "redirect:/home/"+login+"/conge";
 	}
 	
 	@RequestMapping(value="")
 	public String listConge(Model model,@PathVariable("login") String login) {
 		List<Conge> listConge = employeService.findEmployeByLogin(login).getCongeList();
+		Employe employe = employeService.findEmployeByLogin(login);
 		model.addAttribute("listConge",listConge);
 		model.addAttribute("login",login);
+		model.addAttribute("congeRestant",employe.getCongeRestant());
 		return "liste_conge";
 	}
 	@GetMapping("/delete/{id}")

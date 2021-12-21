@@ -23,12 +23,14 @@
                                 <label for="dateDebut" class="col-form-label">Date Debut</label> 
                                 <input type="date" th:field="*{dateDebut}" th:value="*{dateDebut}" class="form-control"
                                             id="dateDebut" placeholder="Date Debut" />
+                                            <div id="error2" class="invalid-tooltip" >la date de fin doit superieur a la date de debut</div>
                             </div>
                             
                             <div class="form-group col-md-8">
                                 <label for="dateFin" class="col-form-label">Date Fin</label> 
                                 <input type="date" th:field="*{dateFin}" th:value="*{dateFin}" class="form-control"
                                             id="dateFin" placeholder="Date Fin" />
+                                            <div id="error2" class="invalid-tooltip" >la date de fin doit superieur a la date de debut</div>
                             </div>
                             
                             <div class="form-group col-md-8">
@@ -58,7 +60,7 @@
  							<input type="hidden" id="employe_id" th:value="*{employe.id}" th:field="*{employe.id}">
                            
                             <div class="col-md-6">
-                                <input type="submit" class="btn btn-primary" value=" Submit ">
+                                <input type="submit" class="btn btn-primary" value=" Submit" id="submit">
                             </div>
  
                            
@@ -69,6 +71,7 @@
             </div>
         </div>
     </div>
+    <script th:src="@{/scripts/controlSaisieConge.js}"></script>
 </body>
  
 </html>

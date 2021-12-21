@@ -108,6 +108,9 @@ public class ResponsableController {
 	@GetMapping("/responsable/conge/{id}/valider")
 		public String validerConge(@PathVariable("id") long id) {
 			congeService.changeEtat(id, "valider");
+			Conge conge = congeService.get(id);
+			conge.getEmploye().setCongeRestant(conge.getEmploye().getCongeRestant()-1);
+			congeService.save(conge);
 			System.out.println("Refuser");
 			return "redirect:/responsable/congeList";
 		}
@@ -121,7 +124,8 @@ public class ResponsableController {
 	
 	@RequestMapping("/responsable/congeList")
 	public String listConge(Model model) {
-		List<Conge> listConge = congeService.listByEtat("enCours");
+		//List<Conge> listConge = congeService.listByEtat("enCours");
+		List<Conge> listConge = congeService.listAll();
 		model.addAttribute("listConge",listConge);
 		
 		return "consult_conge";
